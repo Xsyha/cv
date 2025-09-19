@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Linkedin, MessageCircle, ExternalLink, Calendar, GraduationCap, Briefcase, Code, Palette } from 'lucide-react';
+const serverBase = 'https://tracker-elt085hej-os-projects-03f24e75.vercel.app/';
 
 const CVApp = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -341,10 +342,10 @@ const CVApp = () => {
           <h1 style={styles.headerTitle}>Oksana Rublenko</h1>
           <p style={styles.headerSubtitle}>Frontend Developer</p>
           <p style={styles.headerDescription}>
-            Experienced Frontend Developer with over 5 years of professional experience. 
-            Proficient in HTML, CSS, and JavaScript. Currently working at 2Index.ninja, 
-            specializing in developing and optimizing user interfaces. Skilled in building 
-            responsive, SEO-friendly websites and enhancing application performance to 
+            Experienced Frontend Developer with over 5 years of professional experience.
+            Proficient in HTML, CSS, and JavaScript. Currently working at 2Index.ninja,
+            specializing in developing and optimizing user interfaces. Skilled in building
+            responsive, SEO-friendly websites and enhancing application performance to
             deliver seamless user experiences.
           </p>
         </div>
@@ -396,7 +397,7 @@ const CVApp = () => {
                     <div style={styles.workHeader}>
                       <h3 style={styles.workTitle}>{job.title}</h3>
                       <div style={styles.workPeriod}>
-                        <Calendar style={{width: '16px', height: '16px'}} />
+                        <Calendar style={{ width: '16px', height: '16px' }} />
                         <span>{job.period}</span>
                       </div>
                     </div>
@@ -424,7 +425,7 @@ const CVApp = () => {
                 <div style={styles.educationHeader}>
                   <h3 style={styles.educationTitle}>{education.degree}</h3>
                   <div style={styles.workPeriod}>
-                    <Calendar style={{width: '16px', height: '16px'}} />
+                    <Calendar style={{ width: '16px', height: '16px' }} />
                     <span>{education.period}</span>
                   </div>
                 </div>
@@ -465,10 +466,13 @@ const CVApp = () => {
                 <h2 style={styles.sectionTitle}>Projects</h2>
               </div>
               <div>
-                {projects.map((project, index) => (
-                  <a
+                {projects.map((project, index) => {
+                    const trackUrl = `${serverBase}/r?to=${encodeURIComponent(project.url)}&label=${encodeURIComponent(project.name)}`;
+
+
+                  return <a
                     key={index}
-                    href={project.url}
+                    href={trackUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={styles.projectItem}
@@ -486,7 +490,7 @@ const CVApp = () => {
                     <span style={styles.projectName}>{project.name}</span>
                     <ExternalLink className="project-icon" style={styles.projectIcon} />
                   </a>
-                ))}
+                })}
               </div>
             </section>
           </div>
