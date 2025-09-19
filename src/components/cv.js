@@ -334,24 +334,25 @@ const CVApp = () => {
 
   const styles = getResponsiveStyles();
 
-  const handleClick = async (url) => {
+const handleClick = async (to, label) => {
+  try {
+    const response = await fetch(`${serverBase}/api/track`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ to, label }),
+    });
 
-
-    try {
-      const response = await fetch(`${serverBase}/api/track${url}`, {
-        method: 'POST', // Method
-        headers: {
-          'Content-Type': 'application/json', // Ensuring the payload is in JSON format
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-    } catch (error) {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
-  };
+
+  } catch (error) {
+    console.error("Tracking error:", error);
+  }
+};
+
   return (
     <div style={styles.container}>
       <div style={styles.cvCard}>
@@ -485,16 +486,13 @@ const CVApp = () => {
               </div>
               <div>
                 {projects.map((project, index) => {
-                    const trackUrl = `${serverBase}/api/track?to=${encodeURIComponent(project.url)}&label=${encodeURIComponent(project.name)}`;
-
-
                   return <a
                     key={index}
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={styles.projectItem}
-                    onClick={()=>handleClick(`?to=${encodeURIComponent(project.url)}&label=${encodeURIComponent(project.name)}`)}
+                    onClick={()=>handleClick(encodeURIComponent(project.url), encodeURIComponent(project.url))}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = '#1565c0';
                       e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
