@@ -336,7 +336,7 @@ const CVApp = () => {
 
 const handleClick = async (to, label) => {
   try {
-    const response = await fetch(`${serverBase}/api`, {
+    const response = await fetch(`${serverBase}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
