@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Linkedin, MessageCircle, ExternalLink, Calendar, GraduationCap, Briefcase, Code, Palette } from 'lucide-react';
-const serverBase = 'https://tracker-elt085hej-os-projects-03f24e75.vercel.app/';
+const serverBase = 'tracker-git-main-os-projects-03f24e75.vercel.app/';
 
 const CVApp = () => {
   const [isMobile, setIsMobile] = useState(false);
