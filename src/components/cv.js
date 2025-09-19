@@ -467,7 +467,7 @@ const CVApp = () => {
               </div>
               <div>
                 {projects.map((project, index) => {
-                    const trackUrl = `${serverBase}/r?to=${encodeURIComponent(project.url)}&label=${encodeURIComponent(project.name)}`;
+                    const trackUrl = `${serverBase}/api/track?to=${encodeURIComponent(project.url)}&label=${encodeURIComponent(project.name)}`;
 
 
                   return <a
