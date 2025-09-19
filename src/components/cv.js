@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Linkedin, MessageCircle, ExternalLink, Calendar, GraduationCap, Briefcase, Code, Palette } from 'lucide-react';
-const serverBase = 'https://tracker-git-main-os-projects-03f24e75.vercel.app/';
+const serverBase = 'https://tracker-git-main-os-projects-03f24e75.vercel.app';
 
 const CVApp = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -81,11 +81,11 @@ const CVApp = () => {
   ];
 
   const projects = [
-    { url: "https://2index.ninja/", name: "2Index.ninja" },
+    { url: "https://2index.ninja", name: "2Index.ninja" },
     { url: "https://vikanto.ua", name: "Vikanto" },
     { url: "https://rosanuts.nl", name: "Rosanuts" },
     { url: "https://marshzhinok.com.ua", name: "Marshzhinok" },
-    { url: "https://usa.tourpartner.ua/", name: "Tour Partner USA" }
+    { url: "https://usa.tourpartner.ua", name: "Tour Partner USA" }
   ];
 
   const getResponsiveStyles = () => ({
