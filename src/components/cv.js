@@ -334,6 +334,24 @@ const CVApp = () => {
 
   const styles = getResponsiveStyles();
 
+  const handleClick = async (url) => {
+
+
+    try {
+      const response = await fetch(`${serverBase}/api/track${url}`, {
+        method: 'POST', // Method
+        headers: {
+          'Content-Type': 'application/json', // Ensuring the payload is in JSON format
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+    } catch (error) {
+    }
+  };
   return (
     <div style={styles.container}>
       <div style={styles.cvCard}>
@@ -472,10 +490,11 @@ const CVApp = () => {
 
                   return <a
                     key={index}
-                    href={trackUrl}
+                    href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={styles.projectItem}
+                    onClick={()=>handleClick(`?to=${encodeURIComponent(project.url)}&label=${encodeURIComponent(project.name)}`)}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = '#1565c0';
                       e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
